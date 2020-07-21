@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>My Blog</title>
+  <title>Shan Blog</title>
 	<link rel="icon" href="img/Fevicon.png" type="image/png">
 
   <link rel="stylesheet" href="{{asset('vendors/bootstrap/bootstrap.min.css')}}">
@@ -23,7 +23,7 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container box_1620">
           <!-- Brand and toggle get grouped for better mobile display -->
-          <a class="navbar-brand logo_h" href="{{route('primary')}}"> <h1>My Blog</h1> </a>
+          <a class="navbar-brand logo_h" href="{{route('primary')}}"> <h1>Shan Blog</h1> </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -94,7 +94,7 @@
       <div class="row">
         <div class="col-lg-8">
             <div class="main_blog_details">
-                <img class="img-fluid" src="{{asset('storage/'.$post->image)}}" alt="img">
+                <img class="img-fluid" src="{{asset($post->image)}}" alt="img">
                 <a href="#"><h4>{{$post->title}}</h4></a>
                 <div class="user_details">
                   <div class="float-left">
@@ -113,7 +113,7 @@
                         <p>{{$post->created_at}}</p>
                       </div>
                       <div class="d-flex">
-                        <img width="42" height="42" src="{{$user->profile->picture !=null ? asset('storage/'.$user->getPicture()):$user->getGravatar()}}" alt="">
+                        <img width="42" height="42" src="{{$user->profile->picture !=null ? asset($user->getPicture()):$user->getGravatar()}}" alt="">
                       </div>
                     </div>
                   </div>
