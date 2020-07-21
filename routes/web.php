@@ -28,6 +28,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/restore/{id}', 'PostController@restore')->name('posts.restore');
     Route::get('/users/{user}/profile', 'UserController@edit')->name('user.edit');
     Route::post('/users/{user}/profile', 'UserController@update')->name('user.update');
+    Route::post('/comment', 'CommentController@store')->name('comment.store');
 });
 Route::group(['middleware' => ['auth', 'VerifyAdmin']], function () {
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

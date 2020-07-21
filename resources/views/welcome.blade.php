@@ -119,7 +119,24 @@
                   <ul class="thumb-info">
                     <li><a href="#"><i class="ti-user"></i>{{$post->user->name}}</a></li>
                     <li><a href="#"><i class="ti-notepad"></i>{{$post->created_at->format('Y.m.d')}}</a></li>
-                    <li><a href="#"><i class="ti-themify-favicon"></i>2 Comments</a></li>
+                    <li><a href="#"><i class="ti-themify-favicon"></i>{{count($post->comment)}} Comments</a>
+                    <ul>
+                      @foreach($post->comment as $comm)
+                      <li><b>->{{$comm->comment}}</b></li>
+                      @endforeach
+                    </ul>
+                    <div>
+                      <form role="search" method="post" class="search-form" action="{{route('comment.store')}}">
+                      @csrf
+                        <label for="search-input" id="shanComment" class="search-label">
+                          Comment:   
+                        </label>
+                        <input id="{{$post->id}}" type="search" class="search-input" placeholder="Write a comment" value="" name="comment" title="Search for:" />
+                        <input type="hidden" value="{{$post->id}}" name="post_id" />
+                        <input type="submit" class="search-submit" value="Save" />
+                      </form>
+                    </div>
+                    </li>
                   </ul>
                 </div>
                 <div class="details mt-20">
@@ -320,5 +337,14 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   <script src="{{asset('js/jquery.ajaxchimp.min.js')}}"></script>
   <script src="{{asset('js/mail-script.js')}}"></script>
   <script src="{{asset('js/main.js')}}"></script>
+
+  <script type="text/javascript">
+    document.getElementById("shanComment").addEventListener("click", function(e) {
+      if (e.target == this) {
+        e.preventDefault();
+        this.classList.toggle("clicked");
+      }
+    });
+  </script>
 </body>
 </html>
