@@ -319,7 +319,7 @@
                         </div>
                     </div> -->
                 </div>
-                <div class="comment-form">
+                <!-- <div class="comment-form">
                     <h4>Leave a Reply</h4>
                     <form>
                         <div class="form-group form-inline">
@@ -338,7 +338,7 @@
                         </div>
                         <a href="#" class="button submit_btn">Post Comment</a>
                     </form>
-                </div>
+                </div> -->
         </div>
 
        <!-- Start Blog Post Siddebar -->
@@ -494,7 +494,7 @@
 </div>
 <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
   <p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
 </div>
 </div>
