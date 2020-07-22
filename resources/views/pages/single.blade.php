@@ -119,7 +119,7 @@
                   </div>
                 </div>
                 {!! $post->content !!}
-               <div class="news_d_footer flex-column flex-sm-row">
+               <!-- <div class="news_d_footer flex-column flex-sm-row">
                  <a href="#"><span class="align-middle mr-2"><i class="ti-heart"></i></span>Lily and 4 people like this</a>
                  <a class="justify-content-sm-center ml-sm-auto mt-sm-0 mt-2" href="#"><span class="align-middle mr-2"><i class="ti-themify-favicon"></i></span>06 Comments</a>
                  <div class="news_socail ml-sm-auto mt-sm-0 mt-2">
@@ -128,11 +128,11 @@
                <a href="#"><i class="fab fa-dribbble"></i></a>
                <a href="#"><i class="fab fa-behance"></i></a>
              </div>
-               </div>
+               </div> -->
               </div>
 
 
-          <div class="navigation-area">
+          <!-- <div class="navigation-area">
                   <div class="row">
                       <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
                           <div class="thumb">
@@ -159,7 +159,15 @@
                           </div>
                       </div>
                   </div>
-                </div>
+                </div> -->
+                @if (session()->has('success'))
+                  <div class="alert alert-success mt-1 mb-0 fade show flash" role="alert">
+                      {{session()->get('success')}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                @endif
                 <div class="comments-area">
                     <h4>{{count($post->comment)}} Comments</h4>
                     @foreach($post->comment as $comment)
@@ -178,11 +186,62 @@
                                 </div>
                             </div>
                             <div class="reply-btn">
-                                    <a href="" class="btn-reply text-uppercase">reply</a>
+                                    <!-- <a href="" class="btn-reply text-uppercase">reply</a> -->
+                            <!-- Button trigger modal -->
+                            <button type="button" onclick="add({{$comment->id}});" class="btn-reply text-uppercase" data-toggle="modal" data-target="#exampleModalCenter">reply</button>
                             </div>
                         </div>
                     </div>
+                    <!--Reply  -->
+                    <?php //print_r($comment->reply); ?>
+                    @foreach($comment->reply as $reply)
+                    <div class="comment-list left-padding">
+                        <div class="single-comment justify-content-between d-flex">
+                            <div class="user justify-content-between d-flex">
+                                <div class="thumb">
+                                    <img src="img/blog/c2.jpg" alt="">
+                                </div>
+                                <div class="desc">
+                                    <h5>{{$comment->user->name}}</h5>
+                                    <p class="date">{{$comment->created_at}} </p>
+                                    <p class="comment">
+                                        {{$reply->reply}}
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- <div class="reply-btn">
+                                    <a href="" class="btn-reply text-uppercase">reply</a>
+                            </div> -->
+                        </div>
+                    </div>
                     @endforeach
+                    @endforeach
+
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <form method="POST" action="{{route('reply.save')}}">
+                            @csrf
+                            <div class="modal-body col-md-12">
+                              <textarea name="reply_to_comment"></textarea>
+                            </div>
+                            <input type="hidden" id="commentId" name="comment_id" />
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
                     <!-- <div class="comment-list left-padding">
                         <div class="single-comment justify-content-between d-flex">
                             <div class="user justify-content-between d-flex">
@@ -448,5 +507,15 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{{asset('js/jquery.ajaxchimp.min.js')}}"></script>
 <script src="{{asset('js/mail-script.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
+
+<script type="text/javascript">
+  function add(id)
+  {
+      alert(id);
+      document.getElementById("commentId").value = id;
+
+  }
+</script>
+
 </body>
 </html>
