@@ -122,7 +122,7 @@
                     <li><a href="#"><i class="ti-themify-favicon"></i>{{count($post->comment)}} Comments</a>
                     <ul>
                       @foreach($post->comment as $comm)
-                      <li><b>->{{$comm->comment}}</b></li>
+                      <li><b>->{{$comm->comment}}--Commented By {{$comm->user->name}}</b></li>
                       @endforeach
                     </ul>
                     <div>

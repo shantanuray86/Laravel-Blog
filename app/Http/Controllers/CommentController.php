@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comment;
+use Auth;
 
 class CommentController extends Controller
 {
@@ -19,7 +20,8 @@ class CommentController extends Controller
 
         $comment = Comment::create([
             'comment' => $request->comment,            
-            'post_id' => $request->post_id
+            'post_id' => $request->post_id,
+            'user_id' => Auth::id()
         ]);
 
         session()->flash('success', 'Post added successfuly');
