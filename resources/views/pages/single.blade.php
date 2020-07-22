@@ -161,7 +161,8 @@
                   </div>
                 </div>
                 <div class="comments-area">
-                    <h4>05 Comments</h4>
+                    <h4>{{count($post->comment)}} Comments</h4>
+                    @foreach($post->comment as $comment)
                     <div class="comment-list">
                         <div class="single-comment justify-content-between d-flex">
                             <div class="user justify-content-between d-flex">
@@ -169,10 +170,10 @@
                                     <img src="img/blog/c1.jpg" alt="">
                                 </div>
                                 <div class="desc">
-                                    <h5><a href="#">Emilly Blunt</a></h5>
-                                    <p class="date">December 4, 2020 at 3:12 pm </p>
+                                    <h5><a href="#">{{$comment->user->name}}</a></h5>
+                                    <p class="date">{{$comment->created_at}}</p>
                                     <p class="comment">
-                                        Never say goodbye till the end comes!
+                                        {{$comment->comment}}
                                     </p>
                                 </div>
                             </div>
@@ -181,7 +182,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="comment-list left-padding">
+                    @endforeach
+                    <!-- <div class="comment-list left-padding">
                         <div class="single-comment justify-content-between d-flex">
                             <div class="user justify-content-between d-flex">
                                 <div class="thumb">
@@ -199,8 +201,8 @@
                                     <a href="" class="btn-reply text-uppercase">reply</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="comment-list left-padding">
+                    </div> -->
+                    <!-- <div class="comment-list left-padding">
                         <div class="single-comment justify-content-between d-flex">
                             <div class="user justify-content-between d-flex">
                                 <div class="thumb">
@@ -218,8 +220,8 @@
                                     <a href="" class="btn-reply text-uppercase">reply</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="comment-list">
+                    </div> -->
+                    <!-- <div class="comment-list">
                         <div class="single-comment justify-content-between d-flex">
                             <div class="user justify-content-between d-flex">
                                 <div class="thumb">
@@ -237,8 +239,8 @@
                                     <a href="" class="btn-reply text-uppercase">reply</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="comment-list">
+                    </div> -->
+                    <!-- <div class="comment-list">
                         <div class="single-comment justify-content-between d-flex">
                             <div class="user justify-content-between d-flex">
                                 <div class="thumb">
@@ -256,7 +258,7 @@
                                     <a href="" class="btn-reply text-uppercase">reply</a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="comment-form">
                     <h4>Leave a Reply</h4>
